@@ -83,7 +83,7 @@ export class App extends Component {
     return (
       <div>
         <h1>Phonebook</h1>
-        <Form onSubmit={this.handleNameMatch} />
+        <Form onSubmitForm={this.handleNameMatch} />
         <h2>Contacts</h2>
         <Filter valueFilter={filter} onChange={this.changeFilter} />
         <Contacts
