@@ -14,6 +14,7 @@ export function App() {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ]);
   const [filter, setFilter] = useState('');
+
   // const searchInputId = nanoid();
 
   // useEffect(() => {
@@ -25,14 +26,11 @@ export function App() {
   //     setContacts(parsedContacts);
   //   }
   // }, []);
-  // // console.log(state.contacts);
-  // useEffect(() => {
-  //   const contactsInLocalStorageSet = 'contacts';
-  //   localStorage.setItem(
-  //     contactsInLocalStorageSet,
-  //     JSON.stringify(state.contacts)
-  //   );
-  // });
+  // console.log(contacts);
+  useEffect(() => {
+    const contactsInLocalStorageSet = 'contacts';
+    localStorage.setItem(contactsInLocalStorageSet, JSON.stringify(contacts));
+  }, [contacts]);
 
   const handleNameMatch = (name, number) => {
     const normalizedFind = name.toLocaleLowerCase();
@@ -44,14 +42,15 @@ export function App() {
   };
 
   const formSubmitHandler = (name, number) => {
+    console.log('name:', name);
+    console.log('number:', number);
     const contact = {
       id: nanoid(),
       name,
       number,
     };
-    setContacts(prevState => ({
-      contacts: [contact, ...prevState.contacts],
-    }));
+    setContacts(prevState => [contact, ...prevState]);
+    console.log(contacts);
   };
 
   const changeFilter = event => {
@@ -67,7 +66,6 @@ export function App() {
   };
 
   const deleteContact = contactId => {
-    console.log(contactId);
     setContacts(prevState =>
       prevState.filter(contact => contact.id !== contactId)
     );

@@ -1,7 +1,6 @@
 import css from './Contacts.module.css';
 
 const Contacts = ({ contacts, onDeleteContact }) => {
-  // console.log(contacts);
   return (
     <div className={css.form}>
       <ul>

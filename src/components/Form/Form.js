@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { nanoid } from 'nanoid';
 import css from './Form.module.css';
 
-export default function Form() {
+export default function Form({ onSubmitForm }) {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const nameInputId = nanoid();
@@ -25,9 +25,7 @@ export default function Form() {
 
   const handleSubmit = evt => {
     evt.preventDefault();
-    console.log('name:', name);
-    console.log('number:', number);
-    // onSubmitForm(name, number);
+    onSubmitForm(name, number);
     reset();
   };
 
